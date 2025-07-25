@@ -1,0 +1,22 @@
+cli_resume_builder/
+├── main.py                        # CLI entry point using Typer
+│
+├── commands/                      # Typer command modules
+│   ├── init.py                    # `generate outline resume for experience`
+│   ├── experience.py              # `resume experience add <repo> [--ai]`
+│   ├── skills.py                  # (optional) manual skill edits
+│   └── render.py                  # `Render to markdown/html || pdf`
+│
+├── utils/                         # Utility functions & API clients
+│   ├── github_api.py              # Fetch repo metadata && languages for skills
+│   ├── resume_io.py               # Load/save resume.yaml
+│   └── claude_client.py           # Claude API integration for summaries
+│
+├── templates/                     # Resume rendering templates
+│   └── resume.md.j2               # Jinja2 markdown template
+│
+├── resume.yaml || resume.json     # Auto-generated user résumé data
+│
+├── requirements.txt               # Python deps: typer, requests, PyYAML, jinja2, anthropic, weasyprint
+├── .env                           # Holds ANTHROPIC_API_KEY (if dotenv support added)
+└── README.md                      # For instruction && potentially hackathon presentation

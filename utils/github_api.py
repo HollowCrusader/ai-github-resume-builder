@@ -1,4 +1,5 @@
-from dataclasses import dataclass, field
+from dataclasses import field
+from pydantic import BaseModel, ValidationError
 import httpx
 class GithubAPI:
     __BASE_URL = "https://api.github.com"
@@ -12,9 +13,14 @@ class GithubAPI:
         try:
             response = httpx.get(url)
             response.raise_for_status()
-            return response.json()
-        except httpx.HTTPStatusError as err:
-            print(f"{err.response.status_code}: {err.response.text}")
+            user = User(**response.json())
+            return user
+        except ValidationError as ve:
+            print(f"Validation failed: {ve}")
+        except httpx.HTTPStatusError as he:
+            print(f"{he.response.status_code}: {he.response.text}")
+        except Exception as err:
+            print(f"Unexpected error: {err}")
 
     @classmethod
     def get_repos(cls, username: str):
@@ -23,8 +29,15 @@ class GithubAPI:
         try:
           response = httpx.get(url)
           response.raise_for_status()
-        except httpx.HTTPStatusError as err:
-            print(f"{err.response.status_code}: {err.response.text}")
+          repos_json = response.json()
+          repositories: list[Repo] = [Repo(**repo_data) for repo_data in repos_json]
+          return repositories
+        except ValidationError as ve:
+            print(f"Validation failed: {ve}")
+        except httpx.HTTPStatusError as he:
+            print(f"{he.response.status_code}: {he.response.text}")
+        except Exception as err:
+            print(f"Unexpected error: {err}")
 
     @classmethod
     def get_repo(cls, username: str, repo: str):
@@ -33,13 +46,18 @@ class GithubAPI:
         try:
           response = httpx.get(url)
           response.raise_for_status()
-        except httpx.HTTPStatusError as err:
-            print(f"{err.response.status_code}: {err.response.text}")
+          repository = Repo(**response.json())
+          return repository
+        except ValidationError as ve:
+            print(f"Validation failed: {ve}")
+        except httpx.HTTPStatusError as he:
+            print(f"{he.response.status_code}: {he.response.text}")
+        except Exception as err:
+            print(f"Unexpected error: {err}")
 
 
 
-@dataclass
-class User:
+class User(BaseModel):
     login: str
     id: int
     node_id: str
@@ -74,8 +92,7 @@ class User:
     created_at: str
     updated_at: str
 
-@dataclass
-class Repo:
+class Repo(BaseModel):
     id: int
     node_id: str
     name: str

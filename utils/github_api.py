@@ -5,16 +5,19 @@ class GithubAPI:
     def __init__(self):
         pass
 
-    def get_user(username: str):
+    @classmethod
+    def get_user(cls, username: str):
         url = f"{GithubAPI.__BASE_URL}/users/{username}"
 
         try:
-          response = httpx.get(url)
-          response.raise_for_status()
+            response = httpx.get(url)
+            response.raise_for_status()
+            return response.json()
         except httpx.HTTPStatusError as err:
             print(f"{err.response.status_code}: {err.response.text}")
 
-    def get_repos(username: str):
+    @classmethod
+    def get_repos(cls, username: str):
         url = f"{GithubAPI.__BASE_URL}/users/{username}/repos"
 
         try:
@@ -23,7 +26,8 @@ class GithubAPI:
         except httpx.HTTPStatusError as err:
             print(f"{err.response.status_code}: {err.response.text}")
 
-    def get_repo(username:str, repo: str):
+    @classmethod
+    def get_repo(cls, username: str, repo: str):
         url = f"{GithubAPI.__BASE_URL}/repos/{username}/{repo}"
 
         try:
@@ -145,7 +149,6 @@ class Repo:
     allow_forking: bool
     is_template: bool
     web_commit_signoff_required: bool
-    topics: list[str] = field(default_factory=list)
     visibility: str
     forks: int
     open_issues: int
@@ -154,3 +157,4 @@ class Repo:
     temp_clone_token: str | None
     network_count: int
     subscribers_count: int
+    topics: list[str] = field(default_factory=list)

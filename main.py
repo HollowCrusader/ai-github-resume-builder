@@ -5,6 +5,7 @@ app = typer.Typer()
 
 app.command()(init.initialize_resume)
 app.command()(experience.add_experience)
+app.command()(experience.get_profile)
 app.command()(skills.add_skills)
 app.command()(render.generate_resume)
 

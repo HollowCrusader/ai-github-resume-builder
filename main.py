@@ -3,7 +3,7 @@ from commands import init, experience, skills, render
 
 app = typer.Typer()
 
-app.command()(init.initialize_resume)
+app.command()(init.init)
 app.command()(experience.add_experience)
 app.command()(experience.get_profile)
 app.command()(skills.add_skills)

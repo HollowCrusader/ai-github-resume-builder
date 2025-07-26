@@ -47,7 +47,9 @@ class GithubAPI:
           response = httpx.get(url)
           response.raise_for_status()
           repository = Repo(**response.json())
-          return repository
+          skills = httpx.get(repository.languages_url)
+          response.raise_for_status()
+          return repository, skills
         except ValidationError as ve:
             print(f"Validation failed: {ve}")
         except httpx.HTTPStatusError as he:

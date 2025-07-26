@@ -47,8 +47,14 @@ class GithubAPI:
           response = httpx.get(url)
           response.raise_for_status()
           repository = Repo(**response.json())
+<<<<<<< HEAD
           skills = httpx.get(repository.languages_url)
           response.raise_for_status()
+=======
+          lang_response = httpx.get(repository.languages_url)
+          response.raise_for_status()
+          skills: dict[str, int] = lang_response.json()
+>>>>>>> 07eb2aa (Retrieve skills 'langauges' used in the repository)
           return repository, skills
         except ValidationError as ve:
             print(f"Validation failed: {ve}")

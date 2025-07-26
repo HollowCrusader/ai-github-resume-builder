@@ -1,0 +1,73 @@
+login: octocat
+name: The Octocat
+company: '@github'
+blog: https://github.blog
+email: null
+hireable: null
+bio: null
+location: San Francisco
+twitter_username: null
+followers: 18765
+following: 9
+created_at: '2011-01-25T18:44:36Z'
+updated_at: '2025-07-22T11:24:35Z'
+public_repos: 8
+public_gists: 8
+repos:
+  - name: boysenberry-repo-1
+    description: Testing
+    language: null
+    stars: 346
+    forks_count: 23
+    topics: []
+    html_url: https://github.com/octocat/boysenberry-repo-1
+  - name: linguist
+    description: Language Savant. If your repository's language is being reported
+      incorrectly, send us a pull request!
+    language: Ruby
+    stars: 571
+    forks_count: 216
+    topics: []
+    html_url: https://github.com/octocat/linguist
+  - name: test-repo1
+    description: null
+    language: null
+    stars: 335
+    forks_count: 28
+    topics: []
+    html_url: https://github.com/octocat/test-repo1
+  - name: hello-worId
+    description: My first repository on GitHub.
+    language: null
+    stars: 574
+    forks_count: 228
+    topics: []
+    html_url: https://github.com/octocat/hello-worId
+  - name: git-consortium
+    description: This repo is for demonstration purposes only.
+    language: null
+    stars: 444
+    forks_count: 124
+    topics: []
+    html_url: https://github.com/octocat/git-consortium
+  - name: octocat.github.io
+    description: null
+    language: CSS
+    stars: 878
+    forks_count: 430
+    topics: []
+    html_url: https://github.com/octocat/octocat.github.io
+  - name: Spoon-Knife
+    description: This repo is for demonstration purposes only.
+    language: HTML
+    stars: 13126
+    forks_count: 152349
+    topics: []
+    html_url: https://github.com/octocat/Spoon-Knife
+  - name: Hello-World
+    description: My first repository on GitHub!
+    language: null
+    stars: 3041
+    forks_count: 3276
+    topics: []
+    html_url: https://github.com/octocat/Hello-World

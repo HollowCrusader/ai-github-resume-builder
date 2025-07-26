@@ -1,0 +1,65 @@
+# data.yml
+
+# 1. User object exactly as returned by GET /users/{username}
+login: janedoe
+id: 67890
+name: Jane Doe
+company: Tech Innovators Inc.
+blog: https://janedoe.dev
+location: San Francisco, CA
+email: jane@doe.com
+hireable: true
+bio: "Seasoned software engineer with a focus on API design and cloud‑native architectures."
+twitter_username: janedoe
+public_repos: 4
+public_gists: 2
+followers: 120
+following: 30
+created_at: "2016-03-15T12:00:00Z"
+updated_at: "2025-07-20T08:45:00Z"
+
+# 2. repos: the list from GET /users/{username}/repos
+repos:
+  - name: api-gateway
+    description: "A scalable API gateway written in Go, with built‑in auth."
+    html_url: https://github.com/janedoe/api-gateway
+    stargazers_count: 250
+    forks_count: 45
+    language: Go
+    topics:
+      - microservices
+      - api
+      - cloud
+
+  - name: data-pipeline
+    description: "Python ETL framework for processing streaming data."
+    html_url: https://github.com/janedoe/data-pipeline
+    stargazers_count: 180
+    forks_count: 30
+    language: Python
+    topics:
+      - etl
+      - streaming
+      - kafka
+
+  - name: ui-components
+    description: "Reusable React components for internal dashboards."
+    html_url: https://github.com/janedoe/ui-components
+    stargazers_count: 95
+    forks_count: 12
+    language: JavaScript
+    topics:
+      - react
+      - frontend
+      - design-system
+
+  - name: devops-scripts
+    description: "Shell and Terraform scripts for managing infra on AWS."
+    html_url: https://github.com/janedoe/devops-scripts
+    stargazers_count: 75
+    forks_count: 18
+    language: Shell
+    topics:
+      - terraform
+      - aws
+      - automation

@@ -2,6 +2,8 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import mm
 from reportlab.lib.colors import black
+import yaml
+from pathlib import Path
 
 class PDFWriter:
     """
@@ -47,3 +49,27 @@ class PDFWriter:
         c.showPage()
         c.save()
         print(f"\u2705 PDF saved: {output_path}")
+
+class IndentDumper(yaml.SafeDumper):
+    """
+    Custom YAML dumper to handle indentation and formatting.
+    """
+    def increase_indent(self, flow=False, indentless=False):
+        return super(IndentDumper, self).increase_indent(flow, False)
+
+def save_resume(data):
+    """
+    Save the resume data to a resume.yaml.
+    :param data: Dictionary containing resume data.
+    """
+    with open("resume.yaml", "w", ) as f:
+        yaml.dump(data, f, Dumper=IndentDumper, default_flow_style=False, sort_keys=False, allow_unicode=True, width=80)
+    print("Resume data saved to resume.yaml")
+    
+def load_resume():
+    """
+    Load the resume data from resume.yaml.
+    :return: Dictionary containing resume data.
+    """
+    with open("resume.yaml") as f:
+        return yaml.safe_load(f)

@@ -1,18 +1,18 @@
 import typer
-from commands import init, experience, render
+from commands import init, experience, render, profile
 
 app = typer.Typer()
 
-def run_all(username:str = typer.Argument(...),help="Run all commands"):
+def run_all(username:str = typer.Argument(...),help="Run all commands", yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompts")):
     """Run all commands in sequence."""
     init.init()
-    experience.add_experience(username)
-    experience.get_profile(username)
+    experience.add_experience(username, yes=yes)
+    profile.get_profile(username)
     render.generate_resume()
 
 app.command()(init.init)
 app.command()(experience.add_experience)
-app.command()(experience.get_profile)
+app.command()(profile.get_profile)
 app.command()(render.generate_resume)
 app.command()(run_all)
 

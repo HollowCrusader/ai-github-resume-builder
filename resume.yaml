@@ -49,31 +49,10 @@ repos:
     forks_count: 0
     topics: []
     html_url: https://github.com/HollowCrusader/DvnKiOS
-  - name: HollowCrusader
-    description: null
+  - name: direct-file
+    description: Direct File
     language: null
     stars: 0
     forks_count: 0
     topics: []
-    html_url: https://github.com/HollowCrusader/HollowCrusader
-  - name: securemancala
-    description: null
-    language: PHP
-    stars: 0
-    forks_count: 0
-    topics: []
-    html_url: https://github.com/HollowCrusader/securemancala
-  - name: WineWorx
-    description: null
-    language: JavaScript
-    stars: 0
-    forks_count: 0
-    topics: []
-    html_url: https://github.com/HollowCrusader/WineWorx
-  - name: AllAccess
-    description: null
-    language: C#
-    stars: 0
-    forks_count: 0
-    topics: []
-    html_url: https://github.com/HollowCrusader/AllAccess
+    html_url: https://github.com/HollowCrusader/direct-file

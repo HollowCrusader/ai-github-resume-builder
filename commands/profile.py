@@ -4,7 +4,9 @@ from rich import print
 from utils.resume_io import save_resume, load_resume
 github_api = GithubAPI()
 
-def get_profile(username: str= typer.Argument(...)):
+def get_profile(username: str= typer.Argument(...),
+                yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompts")
+            ):
     """Add the user's GitHub profile to resume.yaml..."""
     
     typer.echo("Fetching GitHub profile...")

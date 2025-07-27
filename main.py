@@ -5,7 +5,7 @@ app = typer.Typer()
 
 def run_all(username:str = typer.Argument(...),help="Run all commands", yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompts")):
     """Run all commands in sequence."""
-    init.init()
+    init.init(yes)
     experience.add_experience(username, yes=yes)
     profile.get_profile(username)
     render.generate_resume()

@@ -68,5 +68,5 @@ def add_experience(
                 "html_url": repo.html_url,
             })
 
-        save_resume(resume)
-    console.print("[green]✅ Updated resume.yaml with new experience and skills.[/]")
+    save_resume(resume)
+    console.print("[green]✅ Updated resume.yaml with new key projects.[/]")

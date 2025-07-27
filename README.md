@@ -52,7 +52,6 @@ Go to Google AI Studio
 → Log in directly to: https://aistudio.google.com/app/apikey
 
 Click “Create API key”
-→ Click on  <button style="border-size:0px; border-radius: 20px; background-color: #086eff; padding:10px; margin:5px;">+ Create API Key</button>
 → Copy the generated key
 
 Set up your ``.env`` file

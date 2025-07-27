@@ -3,7 +3,7 @@ import typer
 from pathlib import Path
 
 
-def init():
+def init(yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompts")):
     """Initialize an empty resume.yaml file."""
     base = {
         "login": "",
@@ -26,7 +26,19 @@ def init():
 
     path = Path("resume.yaml")
     if path.exists():
-        typer.echo("resume.yaml already exists. Skipping initialization.")
+        if not yes:
+            overwrite = typer.confirm("resume.yaml already exists. Do you want to overwrite it?")
+            if overwrite:
+                with open(path, "w") as file:
+                    yaml.dump(base, file, sort_keys=False)
+                    typer.echo("resume.yaml has been overwritten.")
+            else:
+                typer.echo("Skipping initialization. Existing resume.yaml will not be modified.")
+                return
+        else:
+            with open(path, "w") as file:
+                        yaml.dump(base, file, sort_keys=False)
+                        typer.echo("resume.yaml has been overwritten.")
     else:
         with open(path, "w") as file:
             yaml.dump(base, file, sort_keys=False)

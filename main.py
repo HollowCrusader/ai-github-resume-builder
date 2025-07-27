@@ -3,7 +3,7 @@ from commands import init, experience, render, profile
 
 app = typer.Typer()
 
-def run_all(username:str = typer.Argument(...),help="Run all commands", yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompts")):
+def run_all(username:str = typer.Argument(...), yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompts")):
     """Run all commands in sequence."""
     init.init(yes)
     experience.add_experience(username, yes=yes)

@@ -1,6 +1,6 @@
 import typer
 from utils.gemini_client import create_generator_from_env
-from utils.resume_io import PDFWriter
+from utils.resume_io import PDFWriter, load_resume
 from rich.spinner import Spinner
 from rich.console import Console
 
@@ -16,10 +16,16 @@ def generate_resume():
     yaml_file = "resume.yaml"
     pdf_file = "resume.pdf"
 
+    try:
+        resume = load_resume()
+        
+    except FileNotFoundError:
+        console.print("[red]❌ &#x26cxc No resume found. Please run `init` first.[/red]")
+        return
+
     typer.echo("Initializing Gemini AI...")
     gen = create_generator_from_env()
 
-    
     with console.status("[bold green]Generating resume...[/bold green]") as status:
         resume_text = gen.generate_resume(yaml_file)
     

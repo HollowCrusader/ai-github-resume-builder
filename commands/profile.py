@@ -16,7 +16,11 @@ def get_profile(username: str= typer.Argument(...),
     
     profile = github_api.get_user(username)
 
-    resume = load_resume()
+    try:
+        resume = load_resume()
+    except FileNotFoundError:
+        console.print("[red]❌ No resume found. Run `init` first.[/red]")
+        return
     if resume is None:
         typer.echo("No resume found. Please initialize your resume first.")
         return

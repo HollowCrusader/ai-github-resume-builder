@@ -20,8 +20,9 @@ def add_experience(
         console.print("[red]❌ No repos found or GitHub error.[/red]")
         return
 
-    resume = load_resume()
-    if resume is None:
+    try:
+        resume = load_resume()
+    except FileNotFoundError:
         console.print("[red]❌ No resume found. Run `init` first.[/red]")
         return
 

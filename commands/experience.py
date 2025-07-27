@@ -29,6 +29,7 @@ def add_experience(
     for i, repo in enumerate(repos):
         if not yes:
 
+            # Print repo details
             console.rule(f"[bold yellow]{i+1}. {repo.name}")
 
             console.print(f"[cyan]Name:[/] {repo.name}")
@@ -40,6 +41,7 @@ def add_experience(
 
             console.print(f"→ Add [bold green]{repo.name}[/bold green] to resume?")
             include = typer.confirm("Continue?", default=False)
+
             if not include:
                 continue
             

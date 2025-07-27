@@ -24,9 +24,12 @@ def init(yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation 
         "repos":[],
     }
 
+    # Check if resume.yaml already exists
     path = Path("resume.yaml")
     if path.exists():
+        # If it exists and user wants to skip confirmation
         if not yes:
+            # Ask user if they want to overwrite
             overwrite = typer.confirm("resume.yaml already exists. Do you want to overwrite it?")
             if overwrite:
                 with open(path, "w") as file:
@@ -36,10 +39,12 @@ def init(yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation 
                 typer.echo("Skipping initialization. Existing resume.yaml will not be modified.")
                 return
         else:
+            # yaml.dump will overwrite the file without confirmation
             with open(path, "w") as file:
                         yaml.dump(base, file, sort_keys=False)
                         typer.echo("resume.yaml has been overwritten.")
     else:
+        # If it doesn't exist, create a new file
         with open(path, "w") as file:
             yaml.dump(base, file, sort_keys=False)
 

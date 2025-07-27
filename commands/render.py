@@ -9,6 +9,7 @@ console = Console()
 def generate_resume():
     """Generate a resume from the resume.yaml file and save it as a PDF."""
 
+
     """
     This function reads the resume.yaml file, generates the resume text using
     the configured AI model, and writes the output to a PDF file.
@@ -23,6 +24,7 @@ def generate_resume():
         console.print("[red]❌ &#x26cxc No resume found. Please run `init` first.[/red]")
         return
 
+    #Gemini's generator
     typer.echo("Initializing Gemini AI...")
     gen = create_generator_from_env()
 

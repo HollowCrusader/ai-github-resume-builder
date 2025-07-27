@@ -11,11 +11,14 @@ def get_profile(username: str= typer.Argument(...),
                 yes: bool = typer.Option(False, "--yes", "-y", help="Skip confirmation prompts")
             ):
     """Add the user's GitHub profile to resume.yaml..."""
+
+    """Fetches the GitHub profile of the user and adds it to the resume.yaml file."""
     
     typer.echo("Fetching GitHub profile...")
     
     profile = github_api.get_user(username)
 
+    
     try:
         resume = load_resume()
     except FileNotFoundError:
@@ -26,7 +29,7 @@ def get_profile(username: str= typer.Argument(...),
         return
     
     with console.status("[bold green]Adding profile to resume...[/bold green]"):
-        
+        # Check if profile was fetched successfully
         if profile is not None:
             
             resume['login'] = profile.login

@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ---
 
 ## 🔐 Gemini API Key <span style="color:green;">It's free!</span>
-### How to Get Your Gemini API Key (Google AI Studio) 
+### How to Get Your Gemini API Key (Google AI Studio) _The Gemini API key is included in this hackathon project_
 To use Gemini AI for generating your résumé content, you’ll need an API key from Google’s AI Studio.
 
 🪜 Step-by-Step Instructions
